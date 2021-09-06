@@ -2,7 +2,7 @@
 layout: post
 title:  "[Svelte]Svelte 기초"
 date:   2021-09-03
-tags:   Svelte.js
+tags:   Start Svelte.js
 ---
 # Svelte.js 알아보기
 <pre class="info-panel">
@@ -107,153 +107,82 @@ export default {
 - React, Vue의 경우 virtual dom을 통해 메모리에 계산된 마지막 dom tree를 현재의 dom과 `비교`하여 적용합니다.
 - virtual dom을 사용하는 측에서는 이는 real dom에서 re-paint, re-flow가 일어나는 것에 비하면 훨씬 나은 오버헤드가 적용된다고 하지만, virtual-dom과 real-dom사이를 비교 & 적용하는 것은 적지 않은 오버헤드가 발생합니다.
 - Framework 경량화를 통해 프론트를 더 빠르게 시작하고 유지할 수 있습니다.
+- svelte 공식 문서에서는 어떤 부분이 변화할지 안다고 기술 되어있습니다. svelte에서 관리하는 state를 바탕으로 Observable pattern을 통해 변화된 부분만 리렌더링하는 것으로 보입니다.
 
 #### 4. Reactive
 - React, Vue와 같이 데이터 변경에 따른 화면 구성을 합니다.
 - 즉, 상태 관리에 따른 반응형 화면을 구성합니다.
 
-## 2. 상태 정의
-- 상태 정의는 VanillaJs와 같이 변수 선언을 통해 상태를 정의합니다.
+## 2. 설치하기
+<pre class="info-panel">
+ - 아래의 설명 예제는 기본 svelte 설치 script입니다.
+ - react의 create-react-app과 같은 역할입니다.
+ - 하지만 제가 작성한 example code는 svelte, react, vue의 차이점을 보여주기 위해 webpack 설정을 직접 구성했습니다.
+</pre>
+- bundling tool : roll up
+{%highlight shell%}
+// sveltejs/template으로 svelte 환경을 구성하면 bundle tool이 roll up으로 설치됩니다.
+npx degit sveltejs/template my-svelte-project
+
+npm install
+npm run dev
+{%endhighlight%}
+
+- bundling tool : webpack
+{%highlight shell%}
+npx degit sveltejs/template-webpack my-svelte-project
+
+npm install
+npm run dev
+{%endhighlight%}
+
+## 3. 파일 구성
+- React의 경우 html 코드를 jsx(js code)로 작성하는 만큼, .jsx의 내부는 js 코드로 모든 파일이 이루어져 있습니다.
+    - html : jsx(js) 내부에 html 태그 작성, 스코프 내의 선언된 변수 및 함수, global 객체에 접근할 수 있습니다.
+    - js 코드 : class based component 또는 function based component에서 모두 스코프 내부에 변수 및 함수 코드를 작성. 
+    - style을 import하거나 inline-style을 이용합니다.
+    - style-component, sass 등을 이용할 수도 있습니다.
+- Vue의 경우 <template></template>, <script></script>, <style></style>의 세개의 섹션으로 영역이 구성됩니다.
+    - html : <template></template> 내부에 html tag로 작성. 
+        - directive 혹은 지시어를 통해 Vue instance 내부의 속성을 사용할 수 있습니다.
+        - directive를 통해 조건문, 제어문을 사용.
+        - Vue instance가 아닌 global 객체에 접근할 수 없습니다.
+    - js 코드 : <script></script> 내부 Vue instance 내부에 관련 코드 작성.
+    - style : 지역 style의 경우 <style></style> 태그 내부에 작성.
+- Svelte의 경우 html tag, <script></script>, <style></style>의 영역으로 구성됩니다.
+    - html: wrapper html 태그를 이용해 html 작성 
+        - ex) <div>...</div> , <main></main>
+        - template 내부 약속어를 통해 조건문, 제어문을 사용.
+        - html 태그내에서 <script></script>에서 정의된 변수, 함수, 글로벌 객체에 접근 가능.
+    - js 코드: <script></script> 태그내에서 vanillaJs와 같이 변수 & 함수 초기화
+    - style : 지역 style의 경우 <style</style> 태그내에서 사용.
 
 {%highlight React%}
-// React
-export default function Index() {
-    const [name] = React.useState('React');
-    const [inputValue, setInputValue] = React.useState("");
-    const [list, setList] = React.useState(['item1', 'item2']);
-    ....
-}    
-{%endhighlight%}
-
-{%highlight Vue%}
-// Vue
-<script>
-export default {
-  data: function () {
-    return {
-      name: 'Vue',
-      inputValue: '',
-      list: ['item1', 'item2']
-    }
-  }
-}
-</script>
-{%endhighlight%}
-
-{%highlight javascript%}
-// Svelte
-<script>
-	let name = 'Svelte';
-	let inputValue = '';
-	let list = ['item1', 'item2'];
-</script>
-{%endhighlight%}
-
-## 3. method or function 정의.
-- 내부 function or method의 정의도 vanillaJs와 같이 선언형으로 합니다.
-{%highlight React%}
-// React
-export default function Index() {
-    ....
-    const onClick = () => {
-        const value = inputRef?.current?.value;
-        setList(prevState => [...prevState, value]);
-    }
-    ....
-{%endhighlight%}
-
-{%highlight Vue%}
-// Vue
-<script>
-export default {
-  ....
-  methods: {
-    onClick() {
-      this.list.push(this.inputValue);
-    }
-  }
-}
-</script>
-{%endhighlight%}
-
-{%highlight javascript%}
-//Svelte
-<script>
-	....
-	function onClick() {
-		list = [...list, inputValue];
-	}
-</script>
-{%endhighlight%}
-
-## 4. Props 전달 방식.
-- 기존의 방식과 비슷하지만 간단 명료한 정의와 전달 방식을 갖고 있습니다.
-- 컴포넌트에 key={value} 형식으로 전달.
-- 사용 컴포넌트에서는 export keyword를 통해 props임을 명명.
-
-{%highlight React%}
-// React
-// Index.jsx
-
+//React
 import React from 'react'
-import Item from "./Item";
 export default function Index() {
     const [name] = React.useState('React');
-    const [inputValue, setInputValue] = React.useState("");
-    const [list, setList] = React.useState(['item1', 'item2']);
-    const inputRef = React.useRef(null);
-    const onClick = () => {
-        const value = inputRef?.current?.value;
-
-        setList(prevState => [...prevState, value]);
-    }
 
     return (
         <main>
             <h1 style={{color: "#00D8FF"}}>Hello {name}</h1>
             <p>Visit the {name}</p>
-            <input ref={inputRef} type="text" placeholder="입력" value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
-            <button onClick={onClick}>입력</button>
-            <div>입력 값 : {inputValue}</div>
-            {
-                list?.length && list.map((item) => <Item text={item}/> )
-            }
         </main>
     )
 
 }
-
-// Item.jsx
-import React from 'react'
-
-export default function Item({text}) {
-    return (
-        <li>{text}</li>
-    )
-}
 {%endhighlight%}
-
 {%highlight Vue%}
-// Vue
-
-//Index.vue
-
-
+//Vue
 <script>
-import Item from "./Item";
 export default {
-  components: {Item},
   data: function () {
     return {
       name: 'Vue',
-      inputValue: '',
-      list: ['item1', 'item2']
     }
   },
   methods: {
-    onClick() {
-      this.list.push(this.inputValue);
-    }
+   
   }
 }
 </script>
@@ -261,131 +190,45 @@ export default {
 <template>
   <main>
     <h1>Hello {{name}}</h1>
+<!--    <p @click="()=>console.log('click Vue')">Visit the {{name}}!!.</p> Vue instance 외부 global에 접근할 수 없음.-->
     <p>Visit the {{name}}!!.</p>
-    <input type="text" placeholder="입력" v-model="inputValue">
-    <button v-on:click="onClick">입력</button>
-    <div>입력 값 : {{inputValue}}</div>
-
-    <Item v-for="text in list" v-bind:text="text"/>
-
   </main>
 </template>
-{%endhighlight%}
-
-{%highlight javascript%}
-// Svelte
-
-// Index.svelte
-<script>
-	import Item from "./Item.svelte";
-
-	let name = 'Svelte';
-	let inputValue = '';
-	let list = ['item1', 'item2'];
-	function onClick() {
-		list = [...list, inputValue];
-	}
-</script>
-
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the Svelte!!</p>
-	<input type="text" placeholder="입력" bind:value={inputValue}>
-	<button on:click={onClick}>입력</button>
-	<div>입력 값 : {inputValue}</div>
-	{#each list as text}
-		<Item text={text}/>
-	{/each}
-</main>
-
-// Item.svelte
-<script>
-    export let text;
-</script>
-
-<li>{text}</li>
-{%endhighlight%}
-
-## 5. Style 정의
-- vue와 같이 template, script, style 형식의 포맷으로 한 파일을 구성합니다.
-{%highlight javascript%}
-// Svelte
-<script>
-	import Item from "./Item.svelte";
-
-	let name = 'Svelte';
-	let inputValue = '';
-	let list = ['item1', 'item2'];
-	function onClick() {
-		list = [...list, inputValue];
-	}
-</script>
-
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the Svelte!!</p>
-	<input type="text" placeholder="입력" bind:value={inputValue}>
-	<button on:click={onClick}>입력</button>
-	<div>입력 값 : {inputValue}</div>
-	{#each list as text}
-		<Item text={text}/>
-	{/each}
-</main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
+main {
+  text-align: center;
+  padding: 1em;
+  max-width: 240px;
+  margin: 0 auto;
+}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-	input {
-		margin-bottom: 10px;
-		margin-top: 20px;
-	}
+h1 {
+  color: #47C83E;
+  text-transform: uppercase;
+  font-size: 4em;
+  font-weight: 100;
+}
+input {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
 
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+@media (min-width: 640px) {
+  main {
+    max-width: none;
+  }
+}
 </style>
-{%endhighlight%}용
-
-## 6. 컴포넌트 정의 및 사용.
-- 기존의 library or framework와 같이 jsx, vue와 같이 .svelte extensions를 가진 파일에 컴포넌트를 정의 후 export 합니다.
-- 필요한 컴포넌트를 import 후 사용 및 props를 전달합니다.
-
-{%highlight javascript%}
-// Index.svelte
+{%endhighlight%}
+{%highlight js%}
 <script>
-	import Item from "./Item.svelte";
-
 	let name = 'Svelte';
-	let inputValue = '';
-	let list = ['item1', 'item2'];
-	function onClick() {
-		list = [...list, inputValue];
-	}
 </script>
 
 <main>
 	<h1>Hello {name}!</h1>
-	<p>Visit the Svelte!!</p>
-	<input type="text" placeholder="입력" bind:value={inputValue}>
-	<button on:click={onClick}>입력</button>
-	<div>입력 값 : {inputValue}</div>
-	{#each list as text}
-		<Item text={text}/>
-	{/each}
+	<p on:click={() => console.log("click Svelte")}>Visit the Svelte!!</p>
 </main>
 
 <style>
@@ -415,103 +258,7 @@ export default {
 	}
 </style>
 
-
-// Item.svelte
-<script>
-    export let text;
-</script>
-
-<li>{text}</li>
 {%endhighlight%}
-
-
-## 7. Life Cycle
-- life cycle 순서 :  beforeUpdate, onMount, afterUpdate, onDestroy
-- 최초 컴포넌트가 마운트 되기전에 beforeUpdate가 먼저 실행이 됩니다.
-- 컴포넌트에서 변경이 감지되면 beforeUpdate 발생 후 afterUpdate가 발생합니다.
-<img src="https://media.vlpt.us/images/katanazero86/post/8f049c16-d6d4-4f5f-8f98-e3aa834345fb/Svelte%20life%20cycle.png"/>
-<b style="font-size: 9px;">출처: https://velog.io/@katanazero86/svelte-life-cycle-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0</b>
-- beforeUpdate, onMount, afterUpdate, onDestroy 각 life cycle을 아래 코드를 통해 확인할 수 있습니다. -> onDestroy의 경우 삭제 버튼 클릭 시 호출
-{%highlight javascript%}
-    //Index.svelte
-    <script>
-    	import LifeCycle from "./LifeCycle.svelte";
-    
-    	let name = 'Svelte';
-    	let show = true;
-    	function onClickRemoveParent() {
-    		show=false;
-    	}
-    </script>
-    
-    <main>
-    	<h1>Hello {name}!</h1>
-    	<p>Visit the Svelte!!</p>
-    
-    	{#if show}
-    	<LifeCycle/>
-    	{/if}
-    	<button on:click={onClickRemoveParent}>부모 노드 삭제</button>
-    </main>
-    
-    // LifeCycle.svelte
-    <script>
-        import {onMount, onDestroy, beforeUpdate, afterUpdate, tick} from 'svelte'
-    
-        onMount(() => {
-            console.log('onMount');
-        });
-    
-        onDestroy(() => {
-            console.log('onDestroy');
-        });
-    
-        beforeUpdate(() => {
-            console.log('beforeUpdate');
-        });
-    
-        afterUpdate(() => {
-            console.log('afterUpdate');
-        });
-    </script>
-{%endhighlight%}
-<img src="{{site.baseurl}}/images/lifeCycle.png"/>
-
-- svelte에는 특이하게도 tick이라는 lifeCycle이 있습니다.
-- tick은 다른 라이프사이클과 다르게 첫 초기화를 제외하면 언제나 호출할 수 있습니다.
-- tick은 promise를 return하며 상태 변경이 dom에 적용될때 까지 pending됩니다.
-
-{%highlight javascript%}
-// LifeCycle.svelte
-  <script>
-      import {onMount, onDestroy, beforeUpdate, afterUpdate, tick} from 'svelte'
-  
-      onMount(() => {
-          console.log('onMount');
-      });
-  
-      onDestroy(() => {
-          console.log('onDestroy');
-      });
-  
-      beforeUpdate(() => {
-          console.log('beforeUpdate');
-      });
-  
-      afterUpdate(() => {
-          console.log('afterUpdate');
-      });
-  
-      beforeUpdate(async () => {
-         console.log("beforeUpdate with tick");
-         await tick();
-         console.log("tick ....")
-      });
-  
-  </script>
-{%endhighlight%}
-<img src="{{site.baseurl}}/images/withTick.png"/>
-
 <pre class="source">
 출처 :
  - https://2020.stateofjs.com/ko-KR/technologies/front-end-frameworks/
