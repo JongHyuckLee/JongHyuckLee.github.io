@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Webview]React-native & webview 연결하"
+title:  "[Webview]React-native & webview 연결하기"
 date:   2021-09-08
 tags:   React-native, webview, react, javascript interface
 ---
