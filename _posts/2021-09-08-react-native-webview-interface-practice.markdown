@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Webview]React-native & webview 연결하기"
+title:  "[Webview]React-native & webview 연결하"
 date:   2021-09-08
 tags:   React-native, webview, react, javascript interface
 ---
@@ -39,7 +39,7 @@ $ yarn start
 {%endhighlight%}
 
 - webview용 페이지 작성하기
-{%highlight react%}
+{%highlight react%}성
 import React from 'react';
 import './App.css';
 
