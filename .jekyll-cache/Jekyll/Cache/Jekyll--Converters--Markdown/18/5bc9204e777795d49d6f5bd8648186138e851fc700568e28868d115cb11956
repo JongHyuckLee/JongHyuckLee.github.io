@@ -1,0 +1,194 @@
+I"S<h1 id="sveltejs-component">Svelte.js Component</h1>
+<pre class="info-panel">
+ - 본 글은 Svelte에서 Component 정의 및 사용법에 대해 기술하겠습니다.
+ - React, Vue와 차이점을 중심으로 기술하겠습니다.
+</pre>
+
+<h1 id="컴포넌트-정의-및-사용">컴포넌트 정의 및 사용.</h1>
+<ul>
+  <li>기존의 library or framework와 같이 jsx, vue와 같이 .svelte extensions를 가진 파일에 컴포넌트를 정의 후 export 합니다.</li>
+  <li>필요한 컴포넌트를 import 후 사용 및 props를 전달합니다.</li>
+  <li>React와 사용 방법이 흡사합니다. Component를 import 후 원하는 위치에 component를 사용하면 됩니다.</li>
+  <li>Vue의 경우 Vue instance 내부에 component를 등록 후 사용해 주어야 합니다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-react" data-lang="react"><span class="c1">//React</span>
+
+<span class="c1">//Index.jsx</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Item</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./Item</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Index</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">React</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">inputValue</span><span class="p">,</span> <span class="nx">setInputValue</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">list</span><span class="p">,</span> <span class="nx">setList</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">([</span><span class="dl">'</span><span class="s1">item1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">item2</span><span class="dl">'</span><span class="p">]);</span>
+    <span class="kd">const</span> <span class="nx">inputRef</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">onClick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">inputRef</span><span class="p">?.</span><span class="nx">current</span><span class="p">?.</span><span class="nx">value</span><span class="p">;</span>
+
+        <span class="nx">setList</span><span class="p">(</span><span class="nx">prevState</span> <span class="o">=&gt;</span> <span class="p">[...</span><span class="nx">prevState</span><span class="p">,</span> <span class="nx">value</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="p">=&gt;</span>Hello <span class="si">{</span><span class="nx">name</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Visit the <span class="si">{</span><span class="nx">name</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">inputRef</span><span class="si">}</span> <span class="na">type</span><span class="p">=</span><span class="s">"text"</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"입력"</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">inputValue</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">setInputValue</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span><span class="si">}</span><span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">onClick</span><span class="si">}</span><span class="p">&gt;</span>입력<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>입력 값 : <span class="si">{</span><span class="nx">inputValue</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="si">{</span>
+                <span class="nx">list</span><span class="p">?.</span><span class="nx">length</span> <span class="o">&amp;&amp;</span> <span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nc">Item</span> <span class="na">text</span><span class="p">=</span><span class="si">{</span><span class="nx">item</span><span class="si">}</span><span class="p">/&gt;</span> <span class="p">)</span>
+            <span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">)</span>
+
+<span class="p">}</span>
+
+<span class="c1">// Item.jsx</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Item</span><span class="p">({</span><span class="nx">text</span><span class="p">})</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">text</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">)</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-vue" data-lang="vue">//Index.vue
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="c1">//Vue</span>
+
+<span class="c1">//Index.vue</span>
+<span class="k">import</span> <span class="nx">Item</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./Item</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span><span class="nx">Item</span><span class="p">},</span>
+  <span class="na">data</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Vue</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">inputValue</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+      <span class="na">list</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">item1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">item2</span><span class="dl">'</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">onClick</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">inputValue</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Hello <span class="nt">&lt;/h1&gt;</span>
+<span class="c">&lt;!--    </span><span class="nt">&lt;p</span> <span class="err">@</span><span class="na">click=</span><span class="s">"()=&gt;console.log('click Vue')"</span><span class="nt">&gt;</span>Visit the !!.<span class="nt">&lt;/p&gt;</span> Vue instance 외부 global에 접근할 수 없음.--&gt;
+    <span class="nt">&lt;p&gt;</span>Visit the !!.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"입력"</span> <span class="na">v-model=</span><span class="s">"inputValue"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">v-on:click=</span><span class="s">"onClick"</span><span class="nt">&gt;</span>입력<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;div&gt;</span>입력 값 : <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;Item</span> <span class="na">v-for=</span><span class="s">"text in list"</span> <span class="na">v-bind:text=</span><span class="s">"text"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/main&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span><span class="nt">&gt;</span>
+<span class="nt">main</span> <span class="p">{</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">1em</span><span class="p">;</span>
+  <span class="nl">max-width</span><span class="p">:</span> <span class="m">240px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#47C83E</span><span class="p">;</span>
+  <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">4em</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="m">100</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">input</span> <span class="p">{</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nt">main</span> <span class="p">{</span>
+    <span class="nl">max-width</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+
+// Item.vue
+<span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Item.vue</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Svelte</span>
+
+<span class="c1">// Index.svelte</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+	<span class="k">import</span> <span class="nx">Item</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./Item.svelte</span><span class="dl">"</span><span class="p">;</span>
+
+	<span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Svelte</span><span class="dl">'</span><span class="p">;</span>
+	<span class="kd">let</span> <span class="nx">inputValue</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+	<span class="kd">let</span> <span class="nx">list</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">item1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">item2</span><span class="dl">'</span><span class="p">];</span>
+	<span class="kd">function</span> <span class="nx">onClick</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">list</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">list</span><span class="p">,</span> <span class="nx">inputValue</span><span class="p">];</span>
+	<span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span>
+	<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="o">!&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>	<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Visit</span> <span class="nx">the</span> <span class="nx">Svelte</span><span class="o">!!&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>	<span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span> <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">입력</span><span class="dl">"</span> <span class="nx">bind</span><span class="p">:</span><span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">inputValue</span><span class="p">}</span><span class="o">&gt;</span>
+	<span class="o">&lt;</span><span class="nx">button</span> <span class="nx">on</span><span class="p">:</span><span class="nx">click</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">입력</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>	<span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">입력</span> <span class="nx">값</span> <span class="p">:</span> <span class="p">{</span><span class="nx">inputValue</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>	<span class="p">{</span><span class="err">#</span><span class="nx">each</span> <span class="nx">list</span> <span class="k">as</span> <span class="nx">text</span><span class="p">}</span>
+		<span class="o">&lt;</span><span class="nx">Item</span> <span class="nx">text</span><span class="o">=</span><span class="p">{</span><span class="nx">text</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>	<span class="p">{</span><span class="sr">/each</span><span class="err">}
+</span><span class="o">&lt;</span><span class="sr">/main</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">style</span><span class="o">&gt;</span>
+	<span class="nx">main</span> <span class="p">{</span>
+		<span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="p">:</span> <span class="nx">center</span><span class="p">;</span>
+		<span class="nl">padding</span><span class="p">:</span> <span class="mi">1</span><span class="nx">em</span><span class="p">;</span>
+		<span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="p">:</span> <span class="mi">240</span><span class="nx">px</span><span class="p">;</span>
+		<span class="nl">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="nx">auto</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="nx">h1</span> <span class="p">{</span>
+		<span class="nl">color</span><span class="p">:</span> <span class="err">#</span><span class="nx">ff3e00</span><span class="p">;</span>
+		<span class="nx">text</span><span class="o">-</span><span class="nx">transform</span><span class="p">:</span> <span class="nx">uppercase</span><span class="p">;</span>
+		<span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="p">:</span> <span class="mi">4</span><span class="nx">em</span><span class="p">;</span>
+		<span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="p">:</span> <span class="mi">100</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nx">input</span> <span class="p">{</span>
+		<span class="nx">margin</span><span class="o">-</span><span class="nx">bottom</span><span class="p">:</span> <span class="mi">10</span><span class="nx">px</span><span class="p">;</span>
+		<span class="nx">margin</span><span class="o">-</span><span class="nx">top</span><span class="p">:</span> <span class="mi">20</span><span class="nx">px</span><span class="p">;</span>
+	<span class="p">}</span>
+
+
+	<span class="p">@</span><span class="nd">media</span> <span class="p">(</span><span class="nx">min</span><span class="o">-</span><span class="nx">width</span><span class="p">:</span> <span class="mi">640</span><span class="nx">px</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">main</span> <span class="p">{</span>
+			<span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="p">:</span> <span class="nx">none</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/style</span><span class="err">&gt;
+</span>
+
+<span class="c1">// Item.svelte</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="k">export</span> <span class="kd">let</span> <span class="nx">text</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">text</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li&gt;</span></code></pre></figure>
+
+<pre class="source">
+git example :
+ - https://github.com/JongHyuckLee/svelte-study
+ 
+</pre>
+:ET

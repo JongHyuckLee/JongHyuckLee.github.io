@@ -1,0 +1,286 @@
+I"h<h1 id="sveltejs-life-cycle">Svelte.js Life Cycle</h1>
+<pre class="info-panel">
+ - 본 글은 Svelte에서 라이프사이클에 대해 기술하겠습니다.
+ - React, Vue와 차이점을 중심으로 기술하겠습니다.
+</pre>
+
+<h1 id="life-cycle">Life Cycle</h1>
+<ul>
+  <li>life cycle 순서 :  beforeUpdate, onMount, afterUpdate, onDestroy</li>
+  <li>최초 컴포넌트가 마운트 되기전에 beforeUpdate가 먼저 실행이 됩니다.</li>
+  <li>
+    <p>컴포넌트에서 변경이 감지되면 beforeUpdate 발생 후 afterUpdate가 발생합니다.</p>
+  </li>
+  <li>beforeUpdate, onMount, afterUpdate, onDestroy 각 life cycle을 아래 코드를 통해 확인할 수 있습니다. -&gt; onDestroy의 경우 삭제 버튼 클릭 시 호출</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-react" data-lang="react"><span class="c1">//React</span>
+
+<span class="c1">//Index.jsx</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">LifeCycle</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./LifeCycle</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Index</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">show</span><span class="p">,</span> <span class="nx">setShow</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+            <span class="si">{</span><span class="nx">show</span> <span class="o">&amp;&amp;</span> <span class="p">&lt;</span><span class="nc">LifeCycle</span><span class="p">/&gt;</span><span class="si">}</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setShow</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>라이프 사이클 컴포넌트 삭제<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">)</span>
+
+<span class="p">}</span>
+
+<span class="c1">//LifeCycle.jsx</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">LifeCycle</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">doUpdate</span><span class="p">,</span> <span class="nx">setDoUpdate</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">라이프 사이클</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">모든 업데이트마다 실행</span><span class="dl">"</span><span class="p">);</span>
+        <span class="c1">//componentDidMount, componentDidUpdate 수행</span>
+    <span class="p">});</span>
+
+    <span class="nx">React</span><span class="p">.</span><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">첫 번째 렌더링 시에만 실행</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">},</span> <span class="p">[]);</span>
+
+    <span class="nx">React</span><span class="p">.</span><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">doUpdate update시에 실행</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">},</span> <span class="p">[</span><span class="nx">doUpdate</span><span class="p">]);</span>
+
+    <span class="nx">React</span><span class="p">.</span><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">unmount 시에 실행</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">},</span> <span class="p">[])</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">doUpdate</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">)</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><img src="https://www.paduckk-dev.com/static/cb0ac82f8c5ab0ff4aff6a5818a6a92a/2c082/react_lifecycle_ko.jpg" />
+<b style="font-size: 9px;">출처: https://github.com/wojtekmaj/react-lifecycle-methods-diagram</b>
+<img src="/images/lifeCycleReact.png" /></p>
+
+<figure class="highlight"><pre><code class="language-vue" data-lang="vue">//Vue
+
+//Index.vue
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">import</span> <span class="nx">LifeCycle</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./LifeCycle</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span><span class="nx">LifeCycle</span><span class="p">},</span>
+  <span class="na">data</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">show</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">removeLifeCycle</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;LifeCycle</span> <span class="na">v-if=</span><span class="s">"show"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;button</span>  <span class="err">@</span><span class="na">click=</span><span class="s">"removeLifeCycle"</span><span class="nt">&gt;</span>라이프사이클 컴포넌트 삭제<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/main&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span><span class="nt">&gt;</span>
+<span class="nt">main</span> <span class="p">{</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">1em</span><span class="p">;</span>
+  <span class="nl">max-width</span><span class="p">:</span> <span class="m">240px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#47C83E</span><span class="p">;</span>
+  <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">4em</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="m">100</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">input</span> <span class="p">{</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nt">main</span> <span class="p">{</span>
+    <span class="nl">max-width</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+
+//LifeCycle.vue
+<span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>라이프 싸이클<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">LifeCycle</span><span class="dl">"</span><span class="p">,</span>
+  <span class="nx">beforeCreate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">before Create</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">created</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">create</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">beforeMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">before Mount</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">mounted</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">beforeUpdate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">before Update</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">updated</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">updated</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">beforeDestroy</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">before Destroy</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">destroyed</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">destroy</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p><img src="https://kr.vuejs.org/images/lifecycle.png" />
+<b style="font-size: 9px;">출처: https://kr.vuejs.org/v2/guide/instance.html#%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4-%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8</b>
+<img src="/images/lifeCycleVue.png" /></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"> <span class="c1">//Svelt</span>
+ 
+ <span class="c1">//Index.svelte</span>
+ <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+ 	<span class="k">import</span> <span class="nx">LifeCycle</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./LifeCycle.svelte</span><span class="dl">"</span><span class="p">;</span>
+ 
+ 	<span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Svelte</span><span class="dl">'</span><span class="p">;</span>
+ 	<span class="kd">let</span> <span class="nx">show</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+ 
+ 	<span class="kd">function</span> <span class="nx">onClickRemoveParent</span><span class="p">()</span> <span class="p">{</span>
+ 		<span class="nx">show</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+ 	<span class="p">}</span>
+ <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span> 
+ <span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span>
+ 	<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="o">!&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span> 	<span class="p">{</span><span class="err">#</span><span class="k">if</span> <span class="nx">show</span><span class="p">}</span>
+ 	<span class="o">&lt;</span><span class="nx">LifeCycle</span><span class="o">/&gt;</span>
+ 	<span class="p">{</span><span class="o">/</span><span class="k">if</span><span class="p">}</span>
+ 	<span class="o">&lt;</span><span class="nx">button</span> <span class="nx">on</span><span class="p">:</span><span class="nx">click</span><span class="o">=</span><span class="p">{</span><span class="nx">onClickRemoveParent</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">LifeCycle</span> <span class="nx">컴포넌트</span> <span class="nx">삭제</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span> <span class="o">&lt;</span><span class="sr">/main</span><span class="err">&gt;
+</span> 
+ <span class="o">&lt;</span><span class="nx">style</span><span class="o">&gt;</span>
+ 	<span class="nx">main</span> <span class="p">{</span>
+ 		<span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="p">:</span> <span class="nx">center</span><span class="p">;</span>
+ 		<span class="nl">padding</span><span class="p">:</span> <span class="mi">1</span><span class="nx">em</span><span class="p">;</span>
+ 		<span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="p">:</span> <span class="mi">240</span><span class="nx">px</span><span class="p">;</span>
+ 		<span class="nl">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="nx">auto</span><span class="p">;</span>
+ 	<span class="p">}</span>
+ 
+ 	<span class="nx">h1</span> <span class="p">{</span>
+ 		<span class="nl">color</span><span class="p">:</span> <span class="err">#</span><span class="nx">ff3e00</span><span class="p">;</span>
+ 		<span class="nx">text</span><span class="o">-</span><span class="nx">transform</span><span class="p">:</span> <span class="nx">uppercase</span><span class="p">;</span>
+ 		<span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="p">:</span> <span class="mi">4</span><span class="nx">em</span><span class="p">;</span>
+ 		<span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="p">:</span> <span class="mi">100</span><span class="p">;</span>
+ 	<span class="p">}</span>
+ 	<span class="nx">input</span> <span class="p">{</span>
+ 		<span class="nx">margin</span><span class="o">-</span><span class="nx">bottom</span><span class="p">:</span> <span class="mi">10</span><span class="nx">px</span><span class="p">;</span>
+ 		<span class="nx">margin</span><span class="o">-</span><span class="nx">top</span><span class="p">:</span> <span class="mi">20</span><span class="nx">px</span><span class="p">;</span>
+ 	<span class="p">}</span>
+ 
+ 
+ 	<span class="p">@</span><span class="nd">media</span> <span class="p">(</span><span class="nx">min</span><span class="o">-</span><span class="nx">width</span><span class="p">:</span> <span class="mi">640</span><span class="nx">px</span><span class="p">)</span> <span class="p">{</span>
+ 		<span class="nx">main</span> <span class="p">{</span>
+ 			<span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="p">:</span> <span class="nx">none</span><span class="p">;</span>
+ 		<span class="p">}</span>
+ 	<span class="p">}</span>
+ <span class="o">&lt;</span><span class="sr">/style</span><span class="err">&gt;
+</span>
+ 
+ <span class="c1">// LifeCycle.svelte</span>
+ <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+     <span class="k">import</span> <span class="p">{</span><span class="nx">onMount</span><span class="p">,</span> <span class="nx">onDestroy</span><span class="p">,</span> <span class="nx">beforeUpdate</span><span class="p">,</span> <span class="nx">afterUpdate</span><span class="p">,</span> <span class="nx">tick</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">svelte</span><span class="dl">'</span>
+ 
+     <span class="nx">onMount</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">onMount</span><span class="dl">'</span><span class="p">);</span>
+     <span class="p">});</span>
+ 
+     <span class="nx">onDestroy</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">onDestroy</span><span class="dl">'</span><span class="p">);</span>
+     <span class="p">});</span>
+ 
+     <span class="nx">beforeUpdate</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeUpdate</span><span class="dl">'</span><span class="p">);</span>
+     <span class="p">});</span>
+ 
+     <span class="nx">afterUpdate</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">afterUpdate</span><span class="dl">'</span><span class="p">);</span>
+     <span class="p">});</span>
+ 
+     <span class="nx">beforeUpdate</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">beforeUpdate with tick</span><span class="dl">"</span><span class="p">);</span>
+        <span class="k">await</span> <span class="nx">tick</span><span class="p">();</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">tick ....</span><span class="dl">"</span><span class="p">)</span>
+     <span class="p">});</span>
+ 
+ <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">라이프</span> <span class="nx">사이클</span><span class="o">&lt;</span><span class="sr">/div&gt;</span></code></pre></figure>
+
+<p><img src="https://media.vlpt.us/images/katanazero86/post/8f049c16-d6d4-4f5f-8f98-e3aa834345fb/Svelte%20life%20cycle.png" />
+<b style="font-size: 9px;">출처: https://velog.io/@katanazero86/svelte-life-cycle-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0</b>
+<img src="/images/lifeCycleSvelte.png" /></p>
+
+<h1 id="tick-life-cycle">Tick Life Cycle</h1>
+<ul>
+  <li>svelte에는 특이하게도 tick이라는 lifeCycle이 있습니다.</li>
+  <li>tick은 다른 라이프사이클과 다르게 첫 초기화를 제외하면 언제나 호출할 수 있습니다.</li>
+  <li>tick은 promise를 return하며 상태 변경이 dom에 적용될때 까지 pending됩니다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// LifeCycle.svelte</span>
+  <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+      <span class="k">import</span> <span class="p">{</span><span class="nx">onMount</span><span class="p">,</span> <span class="nx">onDestroy</span><span class="p">,</span> <span class="nx">beforeUpdate</span><span class="p">,</span> <span class="nx">afterUpdate</span><span class="p">,</span> <span class="nx">tick</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">svelte</span><span class="dl">'</span>
+  
+      <span class="nx">onMount</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">onMount</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+  
+      <span class="nx">onDestroy</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">onDestroy</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+  
+      <span class="nx">beforeUpdate</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeUpdate</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+  
+      <span class="nx">afterUpdate</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">afterUpdate</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+  
+      <span class="nx">beforeUpdate</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">beforeUpdate with tick</span><span class="dl">"</span><span class="p">);</span>
+         <span class="k">await</span> <span class="nx">tick</span><span class="p">();</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">tick ....</span><span class="dl">"</span><span class="p">)</span>
+      <span class="p">});</span>
+  
+  <span class="o">&lt;</span><span class="sr">/script&gt;</span></code></pre></figure>
+
+<p><img src="/images/withTick.png" /></p>
+
+<pre class="source">
+출처:
+- https://velog.io/@katanazero86/svelte-life-cycle-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0 
+- https://www.paduckk-dev.com/static/cb0ac82f8c5ab0ff4aff6a5818a6a92a/2c082/react_lifecycle_ko.jpg
+- https://github.com/wojtekmaj/react-lifecycle-methods-diagram
+- https://kr.vuejs.org/v2/guide/instance.html#%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4-%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8
+git example :
+ - https://github.com/JongHyuckLee/svelte-study
+ 
+</pre>
+:ET
