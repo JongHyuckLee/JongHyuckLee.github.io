@@ -19,12 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="RN - webview function interface 블로그 작성">
-      <change afterPath="$PROJECT_DIR$/images/ReactNative/afterClick.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/ReactNative/beforeClick.png" afterDir="false" />
+    <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="RN-webview postMessage를 통한 function mapping 블로그 작성">
+      <change afterPath="$PROJECT_DIR$/_posts/2021-09-11-start-ios-webview.markdown" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.jekyll-cache/Jekyll/Cache/Jekyll--Cache/b7/9606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910" beforeDir="false" afterPath="$PROJECT_DIR$/.jekyll-cache/Jekyll/Cache/Jekyll--Cache/b7/9606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2021-09-10-RN-webview-function-interface.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-09-10-RN-webview-function-interface.markdown" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +82,7 @@
       <workItem from="1630975898065" duration="511000" />
       <workItem from="1631030897760" duration="5797000" />
       <workItem from="1631114589124" duration="7392000" />
-      <workItem from="1631204157297" duration="3627000" />
+      <workItem from="1631204157297" duration="4657000" />
     </task>
     <task id="LOCAL-00001" summary="init jekyll theme">
       <created>1630516763016</created>
@@ -143,7 +140,21 @@
       <option name="project" value="LOCAL" />
       <updated>1631123129408</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="RN-webview postMessage를 통한 function mapping 블로그 작성">
+      <created>1631208543798</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1631208543798</updated>
+    </task>
+    <task id="LOCAL-00010" summary="RN-webview postMessage를 통한 function mapping 블로그 작성">
+      <created>1631208771625</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1631208771625</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,7 +181,8 @@
     <MESSAGE value="webview 포스트 작성 완료" />
     <MESSAGE value="RN - webview 데이터 연동 블로그 작성" />
     <MESSAGE value="RN - webview function interface 블로그 작성" />
-    <option name="LAST_COMMIT_MESSAGE" value="RN - webview function interface 블로그 작성" />
+    <MESSAGE value="RN-webview postMessage를 통한 function mapping 블로그 작성" />
+    <option name="LAST_COMMIT_MESSAGE" value="RN-webview postMessage를 통한 function mapping 블로그 작성" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2216" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1630598964384">
@@ -185,11 +197,11 @@
       <screen x="1792" y="23" width="1920" height="1057" />
     </state>
     <state x="2503" y="413" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1630603283633" />
-    <state x="523" y="281" key="Vcs.Push.Dialog.v2" timestamp="1631120294826">
-      <screen x="0" y="23" width="1792" height="1017" />
+    <state x="2352" y="291" key="Vcs.Push.Dialog.v2" timestamp="1631208548858">
+      <screen x="1792" y="23" width="1920" height="1057" />
     </state>
     <state x="523" y="281" key="Vcs.Push.Dialog.v2/1792.23.1920.1057/0.23.1792.1017@0.23.1792.1017" timestamp="1631120294826" />
-    <state x="2352" y="291" key="Vcs.Push.Dialog.v2/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1630604238450" />
+    <state x="2352" y="291" key="Vcs.Push.Dialog.v2/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1631208548858" />
     <state x="1892" y="123" width="1720" height="857" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1630603737800">
       <screen x="1792" y="23" width="1920" height="1057" />
     </state>
