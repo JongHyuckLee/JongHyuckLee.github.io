@@ -45,30 +45,26 @@ tags: React-native, webview, react, javascript interface, execute function, 리�
 ## code 작성
 ### ViewController.swift
 {%highlight swift%}
-//
-//  ViewController.swift
-//  IosApp
-//
-//  Created by neo_local on 2021/09/10.
-//
-
 import UIKit
 import WebKit
-
 class ViewController: UIViewController, WKUIDelegate {
+    
     var webView: WKWebView!
-        override func loadView() {
-                super.loadView()
-            let url = URL(string: "http://localhost:3000/")
-            let request = URLRequest(url: url!)
-            
-            webView = WKWebView(frame: self.view.frame)
-            webView.frame.size.height = 350
-            webView.configuration.defaultWebpagePreferences.allowsContentJavaScript = true
-            webView.load(request)
-            self.view.addSubview(self.webView)
+    
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        view = webView
     }
-}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let myURL = URL(string:"http://localhost:3000/")
+        let myRequest = URLRequest(url: myURL!)
+        webView.load(myRequest)
+}}
+
 {%endhighlight%}
 - UIKit : 
     - <span class="emphasize">UIKit</span>은 IOS 앱의 사용자 인터페이스를 구현하고 이벤트를 관리하는 KIT입니다.
@@ -134,6 +130,7 @@ ReactDOM.render(
 
 <pre class="source">
 출처:
+- https://developer.apple.com/documentation/webkit/wkwebview
 - https://developers.google.com/admob/ios/app-transport-security?hl=ko
 - https://kdgt-programmer.tistory.com/71
 - https://kathak33.tistory.com/20
