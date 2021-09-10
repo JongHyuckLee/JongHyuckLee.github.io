@@ -19,9 +19,26 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="RN-webview postMessage를 통한 function mapping 블로그 작성">
-      <change afterPath="$PROJECT_DIR$/_posts/2021-09-11-start-ios-webview.markdown" afterDir="false" />
+    <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="Ios WebView 시작하기">
+      <change afterPath="$PROJECT_DIR$/_posts/2021-09-10-start-ios-and-webview.markdown" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/createStoryBoard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/emptyProject.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/iosResult.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/setting.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/startIos.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/storyBoard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/storyBoardWebView.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/webView.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jekyll-cache/Jekyll/Cache/Jekyll--Cache/b7/9606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jekyll-cache/Jekyll/Cache/Jekyll--Converters--Markdown/18/5bc9204e777795d49d6f5bd8648186138e851fc700568e28868d115cb11956" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jekyll-cache/Jekyll/Cache/Jekyll--Converters--Markdown/96/5fcacfa5a96aaaf194c44af3437c60f253bf7128b1739fdde8e945816ca6ef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jekyll-cache/Jekyll/Cache/Jekyll--Converters--Markdown/b6/347245e169d1db46423f7b28a17aaf32f606571dd2912ef9e90aac43a81640" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jekyll-cache/Jekyll/Cache/Jekyll--Converters--Markdown/b9/85d13e3752be1dcc0d5ff6d8faffb0f3f2d601aa3286423c0a4ccb1b3db288" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jekyll-cache/Jekyll/Cache/Jekyll--Converters--Markdown/e3/b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2021-09-10-RN-webview-function-interface.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-09-10-RN-webview-function-interface.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2021-09-11-start-ios-webview.markdown" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_sass/4-layouts/_post.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/4-layouts/_post.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,11 +72,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images/Ios" />
       <recent name="$PROJECT_DIR$/images/ReactNative" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/__backUp" />
       <recent name="$PROJECT_DIR$/backUp" />
-      <recent name="$PROJECT_DIR$/backup" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -82,7 +99,9 @@
       <workItem from="1630975898065" duration="511000" />
       <workItem from="1631030897760" duration="5797000" />
       <workItem from="1631114589124" duration="7392000" />
-      <workItem from="1631204157297" duration="4657000" />
+      <workItem from="1631204157297" duration="5512000" />
+      <workItem from="1631257689952" duration="5367000" />
+      <workItem from="1631289472586" duration="3422000" />
     </task>
     <task id="LOCAL-00001" summary="init jekyll theme">
       <created>1630516763016</created>
@@ -154,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631208771625</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Ios WebView 시작하기">
+      <created>1631209533234</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1631209533234</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,13 +208,14 @@
     <MESSAGE value="RN - webview 데이터 연동 블로그 작성" />
     <MESSAGE value="RN - webview function interface 블로그 작성" />
     <MESSAGE value="RN-webview postMessage를 통한 function mapping 블로그 작성" />
-    <option name="LAST_COMMIT_MESSAGE" value="RN-webview postMessage를 통한 function mapping 블로그 작성" />
+    <MESSAGE value="Ios WebView 시작하기" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ios WebView 시작하기" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2216" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1630598964384">
+    <state x="2216" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1631259097127">
       <screen x="1792" y="23" width="1920" height="1057" />
     </state>
-    <state x="2216" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1630598964384" />
+    <state x="2216" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1631259097127" />
     <state x="2487" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1631123039789">
       <screen x="1792" y="23" width="1920" height="1057" />
     </state>
