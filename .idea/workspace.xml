@@ -20,8 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="ios webview 시작하기 블로그 작성">
+      <change afterPath="$PROJECT_DIR$/_posts/2021-09-15-ios-webview-exchange-data.markdown" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/executeJs.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2021-09-10-start-ios-and-webview.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-09-10-start-ios-and-webview.markdown" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +86,8 @@
       <workItem from="1631204157297" duration="5512000" />
       <workItem from="1631257689952" duration="5367000" />
       <workItem from="1631289472586" duration="4284000" />
-      <workItem from="1631296440849" duration="305000" />
+      <workItem from="1631296440849" duration="4003000" />
+      <workItem from="1631631790366" duration="3605000" />
     </task>
     <task id="LOCAL-00001" summary="init jekyll theme">
       <created>1630516763016</created>
@@ -204,14 +206,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="ios webview 시작하기 블로그 작성" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2216" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1631259097127">
+    <state x="2216" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1631375873682">
       <screen x="1792" y="23" width="1920" height="1057" />
     </state>
-    <state x="2216" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1631259097127" />
-    <state x="2487" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1631123039789">
+    <state x="2216" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1631375873682" />
+    <state x="2487" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1631373999402">
       <screen x="1792" y="23" width="1920" height="1057" />
     </state>
-    <state x="2487" y="320" key="#com.intellij.fileTypes.FileTypeChooser/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1631123039789" />
+    <state x="2487" y="320" key="#com.intellij.fileTypes.FileTypeChooser/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1631373999402" />
     <state x="2503" y="413" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1630603283633">
       <screen x="1792" y="23" width="1920" height="1057" />
     </state>
@@ -230,10 +232,11 @@
     </state>
     <state x="2459" y="248" width="586" height="501" key="find.popup/1792.0.1920.1080/0.0.1792.1120@1792.0.1920.1080" timestamp="1630949869909" />
     <state x="2459" y="266" width="586" height="490" key="find.popup/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1630862000797" />
-    <state x="721" y="260" key="run.anything.popup" timestamp="1631117613541">
-      <screen x="0" y="23" width="1792" height="1017" />
+    <state x="2565" y="269" width="670" height="675" key="run.anything.popup" timestamp="1631634894415">
+      <screen x="1792" y="23" width="1920" height="1057" />
     </state>
     <state x="721" y="260" key="run.anything.popup/1792.23.1920.1057/0.23.1792.1017@0.23.1792.1017" timestamp="1631117613541" />
+    <state x="2565" y="269" width="670" height="675" key="run.anything.popup/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1631634894415" />
     <state x="2417" y="240" width="670" height="691" key="search.everywhere.popup" timestamp="1630950072878">
       <screen x="1792" y="0" width="1920" height="1080" />
     </state>
