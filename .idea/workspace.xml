@@ -19,13 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="ios - webview 데이터 연동 예제 완료">
-      <change afterPath="$PROJECT_DIR$/_posts/2021-09-18-start-android-webview.markdown" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Android/afterAllowSecurity.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Android/androidLoadError.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Android/directoryList.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="ios - webview 데이터 연동 예제 완료" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,7 +84,7 @@
       <workItem from="1631289472586" duration="4284000" />
       <workItem from="1631296440849" duration="4003000" />
       <workItem from="1631631790366" duration="3924000" />
-      <workItem from="1631891184710" duration="2133000" />
+      <workItem from="1631891184710" duration="2216000" />
     </task>
     <task id="LOCAL-00001" summary="init jekyll theme">
       <created>1630516763016</created>

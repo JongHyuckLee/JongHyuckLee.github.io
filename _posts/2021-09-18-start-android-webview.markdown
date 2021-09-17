@@ -101,3 +101,10 @@ class MainActivity : AppCompatActivity() {
 ## 실행화면
  
  <img src="{{site.baseurl}}/images/Android/afterAllowSecurity.png"/>
+ 
+ 
+<pre class="source">
+git example : 
+- https://github.com/JongHyuckLee/webviewStudy
+ 
+</pre>
