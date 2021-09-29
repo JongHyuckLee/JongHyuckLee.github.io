@@ -195,11 +195,11 @@ ReactDOM.render(
     <App />
   </React.StrictMode>,
   document.getElementById("root")
-);
+); 
 
 {%endhighlight%}
 
-###App.js
+### App.js
 {%highlight javascript%}
 import React from "react";
 import "./App.css";
