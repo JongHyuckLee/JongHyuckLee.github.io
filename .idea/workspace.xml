@@ -19,12 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="ios - webview 데이터 연동 예제 완료">
-      <change afterPath="$PROJECT_DIR$/_posts/2021-09-30-android-webview-exchange-data.markdown" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Android/androidExecuteBackground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Android/androidShowToast.png" afterDir="false" />
+    <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="android - webview 데이터 교환 게시물 작성 완료">
+      <change afterPath="$PROJECT_DIR$/_posts/2021-10-01-ios-webview-debugging.markdown" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/closedDeveloperTab.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/openDeveloperTab.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/safariDebugging.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/safariTab.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/setDeveloperSetting.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Ios/webViewLocalhost.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2021-09-15-ios-webview-exchange-data.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-09-15-ios-webview-exchange-data.markdown" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,15 +60,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/images/Android" />
-      <recent name="$PROJECT_DIR$/images/android" />
-      <recent name="$PROJECT_DIR$/images/Ios" />
-      <recent name="$PROJECT_DIR$/images/ReactNative" />
-      <recent name="$PROJECT_DIR$/images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images/Ios" />
+      <recent name="$PROJECT_DIR$/images/Android" />
+      <recent name="$PROJECT_DIR$/images/android" />
+      <recent name="$PROJECT_DIR$/images/ReactNative" />
+      <recent name="$PROJECT_DIR$/images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -91,7 +94,8 @@
       <workItem from="1631296440849" duration="4003000" />
       <workItem from="1631631790366" duration="3924000" />
       <workItem from="1631891184710" duration="2216000" />
-      <workItem from="1632929062402" duration="4584000" />
+      <workItem from="1632929062402" duration="4698000" />
+      <workItem from="1633020458577" duration="1260000" />
     </task>
     <task id="LOCAL-00001" summary="init jekyll theme">
       <created>1630516763016</created>
@@ -184,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631635650046</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="android - webview 데이터 교환 게시물 작성 완료">
+      <created>1632937909494</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1632937909494</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,7 +226,8 @@
     <MESSAGE value="Ios WebView 시작하기" />
     <MESSAGE value="ios webview 시작하기 블로그 작성" />
     <MESSAGE value="ios - webview 데이터 연동 예제 완료" />
-    <option name="LAST_COMMIT_MESSAGE" value="ios - webview 데이터 연동 예제 완료" />
+    <MESSAGE value="android - webview 데이터 교환 게시물 작성 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="android - webview 데이터 교환 게시물 작성 완료" />
   </component>
   <component name="WindowStateProjectService">
     <state x="396" y="167" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1632929082836">
@@ -223,10 +235,10 @@
     </state>
     <state x="396" y="167" key="#com.intellij.execution.impl.EditConfigurationsDialog/1792.23.1920.1057/0.23.1792.1017@0.23.1792.1017" timestamp="1632929082836" />
     <state x="2216" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1631375873682" />
-    <state x="2487" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1631373999402">
+    <state x="2487" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1633020528509">
       <screen x="1792" y="23" width="1920" height="1057" />
     </state>
-    <state x="2487" y="320" key="#com.intellij.fileTypes.FileTypeChooser/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1631373999402" />
+    <state x="2487" y="320" key="#com.intellij.fileTypes.FileTypeChooser/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1633020528509" />
     <state x="2503" y="413" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1630603283633">
       <screen x="1792" y="23" width="1920" height="1057" />
     </state>
