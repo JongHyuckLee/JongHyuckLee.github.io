@@ -19,13 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="ios webview debugging">
-      <change afterPath="$PROJECT_DIR$/_posts/2021-10-01-android-webview-debugging.markdown" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Android/DiscoverNetworkTargets.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Android/androidConsole.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Android/chromeInspect.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Android/virtualMachine.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Android/webViewIPAndPort.png" afterDir="false" />
+    <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="android webview debugging">
+      <change afterPath="$PROJECT_DIR$/_posts/2021-10-06-start-graphql-with-client.markdown" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/startGraphql.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,16 +55,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/_posts" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/images/Android" />
       <recent name="$PROJECT_DIR$/images/Ios" />
       <recent name="$PROJECT_DIR$/images/android" />
       <recent name="$PROJECT_DIR$/images/ReactNative" />
-      <recent name="$PROJECT_DIR$/images" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/_posts" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -95,7 +91,9 @@
       <workItem from="1631631790366" duration="3924000" />
       <workItem from="1631891184710" duration="2216000" />
       <workItem from="1632929062402" duration="4698000" />
-      <workItem from="1633020458577" duration="2459000" />
+      <workItem from="1633020458577" duration="3145000" />
+      <workItem from="1633451632882" duration="446000" />
+      <workItem from="1633452595531" duration="1417000" />
     </task>
     <task id="LOCAL-00001" summary="init jekyll theme">
       <created>1630516763016</created>
@@ -202,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633021774646</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="android webview debugging">
+      <created>1633022967595</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1633022967595</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +240,8 @@
     <MESSAGE value="ios - webview 데이터 연동 예제 완료" />
     <MESSAGE value="android - webview 데이터 교환 게시물 작성 완료" />
     <MESSAGE value="ios webview debugging" />
-    <option name="LAST_COMMIT_MESSAGE" value="ios webview debugging" />
+    <MESSAGE value="android webview debugging" />
+    <option name="LAST_COMMIT_MESSAGE" value="android webview debugging" />
   </component>
   <component name="WindowStateProjectService">
     <state x="396" y="167" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1632929082836">
@@ -256,10 +262,10 @@
     </state>
     <state x="523" y="281" key="Vcs.Push.Dialog.v2/1792.23.1920.1057/0.23.1792.1017@0.23.1792.1017" timestamp="1631120294826" />
     <state x="2352" y="291" key="Vcs.Push.Dialog.v2/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1631635651755" />
-    <state x="1892" y="123" width="1720" height="857" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1630603737800">
+    <state x="1892" y="123" width="1720" height="857" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1633452670215">
       <screen x="1792" y="23" width="1920" height="1057" />
     </state>
-    <state x="1892" y="123" width="1720" height="857" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1630603737800" />
+    <state x="1892" y="123" width="1720" height="857" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1792.23.1920.1057/0.23.1792.1017@1792.23.1920.1057" timestamp="1633452670215" />
     <state x="2459" y="248" width="586" height="501" key="find.popup" timestamp="1630949869909">
       <screen x="1792" y="0" width="1920" height="1080" />
     </state>
