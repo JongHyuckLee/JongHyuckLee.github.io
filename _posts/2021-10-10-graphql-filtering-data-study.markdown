@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Middleware] Graphql 미들웨어로써 데이터 받아오"
+title: "[Middleware] Graphql 미들웨어로 사용해보기"
 date: 2021-10-10
 tags: Graphql, client, react, middleware
 ---
@@ -57,7 +57,7 @@ app.use('/graphql', graphqlHTTP({
 }));
 app.listen(4000);
 console.log('Running a GraphQL API server at http://localhost:4000/graphql');
-{%endhighlight%}
+{%highlight node%}
 
 - POSTS: mock data 입니다.
 - buildSchema 

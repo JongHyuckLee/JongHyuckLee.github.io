@@ -19,10 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="graphql 시작해보기">
-      <change afterPath="$PROJECT_DIR$/_posts/2021-10-10-graphql-filtering-data-study.markdown" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/MiddleWare/graphqlFiltering.png" afterDir="false" />
+    <list default="true" id="459eb512-a1df-4335-ac9b-0c04a40eec7e" name="Default Changelist" comment="graphql 미들웨어 심화 예제 스터디 완료">
+      <change afterPath="$PROJECT_DIR$/_posts/2021-10-11-using-graphql-crud-study.markdown" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/MiddleWare/crudGraphql.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2021-10-10-graphql-filtering-data-study.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-10-10-graphql-filtering-data-study.markdown" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +96,7 @@
       <workItem from="1633451632882" duration="446000" />
       <workItem from="1633452595531" duration="1541000" />
       <workItem from="1633454841272" duration="527000" />
-      <workItem from="1633796594233" duration="821000" />
+      <workItem from="1633796594233" duration="4744000" />
     </task>
     <task id="LOCAL-00001" summary="init jekyll theme">
       <created>1630516763016</created>
@@ -216,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633454093995</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="graphql 미들웨어 심화 예제 스터디 완료">
+      <created>1633797473320</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1633797473320</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,7 +259,8 @@
     <MESSAGE value="ios webview debugging" />
     <MESSAGE value="android webview debugging" />
     <MESSAGE value="graphql 시작해보기" />
-    <option name="LAST_COMMIT_MESSAGE" value="graphql 시작해보기" />
+    <MESSAGE value="graphql 미들웨어 심화 예제 스터디 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="graphql 미들웨어 심화 예제 스터디 완료" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2216" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1633796626081">
