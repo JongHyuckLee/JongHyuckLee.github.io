@@ -92,7 +92,7 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true,
 }));
 app.listen(4000);
-{%highlight node%}
+{%endhighlight%}
 
 - Mutation : Create, Update 등 데이터 변경이 일어날 때 사용되는 Graphql을 정의합니다.
     -  submitPost : Create 역할을 하는 Graphql 입니다.

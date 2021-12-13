@@ -57,7 +57,7 @@ app.use('/graphql', graphqlHTTP({
 }));
 app.listen(4000);
 console.log('Running a GraphQL API server at http://localhost:4000/graphql');
-{%highlight node%}
+{%endhighlight%}
 
 - POSTS: mock data 입니다.
 - buildSchema 
